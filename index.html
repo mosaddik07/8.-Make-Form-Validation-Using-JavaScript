@@ -8,7 +8,11 @@
   </head>
   <body>
     <div class="container">
-      <form id="contactForm" method="post" name="contact-form">
+      <form
+        method="post"
+        action="https://script.google.com/macros/s/AKfycbxWNG6mnC-8lM20JMV8HxMkoCPuFT4rJwOrVu1_qwr3Gt1h9tKQi8sbsuvHbbC88sDZig/exec"
+        name="contact-form"
+      >
         <i class="fas fa-paper-plane"></i>
 
         <div class="input-group">
@@ -25,37 +29,24 @@
 
         <div class="input-group">
           <label>Phone No.</label>
-          <input
-            type="tel"
-            placeholder="01* ** ** ** **"
-            name="Phone-Number"
-            id="contact-phone"
-            onkeyup="validatePhone()"
-          />
+          <input type="tel" placeholder="01* ** ** ** **" name="Phone-Number" id="contact-phone" onkeyup="validatePhone()" />
           <span id="phone-error"></span>
         </div>
 
         <div class="input-group">
           <label>Email Id</label>
-          <input
-            type="email"
-            placeholder="Enter Email"
-            id="contact-email"
-            name="Email"
-            onkeyup="validateEmail()"
-          />
+          <input type="email" placeholder="Enter Email" id="contact-email" name="Email" onkeyup="validateEmail()" />
           <span id="email-error"></span>
         </div>
 
         <div class="input-group">
           <label>Your Message</label>
-          <textarea rows="5" id="contact-massege" name="Massege" onkeyup="validateMessage()"></textarea>
+          <textarea rows="5" id="contact-massege" name="Massege" onkeyup="validateMessage()"> </textarea>
           <span id="massege-error"></span>
         </div>
 
-        <button type="submit">Submit</button>
+        <button onclick="return validateForm()">Submit</button>
         <span id="submit-error"></span>
-        <div id="messageContainer"></div>
       </form>
     </div>
     <script src="script.js"></script>
