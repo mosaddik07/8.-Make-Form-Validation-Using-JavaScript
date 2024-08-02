@@ -3,7 +3,6 @@ var phoneError = document.getElementById('phone-error');
 var emailError = document.getElementById('email-error');
 var massegeError = document.getElementById('massege-error');
 var submitError = document.getElementById('submit-error');
-var messageContainer = document.getElementById('messageContainer');
 
 function validateName() {
     var name = document.getElementById('contact-name').value;
@@ -66,38 +65,9 @@ function validateMessage() {
 
 function validateForm() {
     if (!validateName() || !validatePhone() || !validateEmail() || !validateMessage()) {
-        submitError.style.display = 'block';
+        submitError.style.display = 'block'
         submitError.innerHTML = 'Please fix error to submit';
-        setTimeout(function () { submitError.style.display = 'none'; }, 3000);
-        return false;
+        setTimeout(function () { submitError.style.display = 'none' }, 3000)
+        return false
     }
-    submitForm();
-    return false;
 }
-
-function submitForm() {
-    var form = document.getElementById('contactForm');
-    var formData = new FormData(form);
-
-    fetch(form.action, {
-        method: 'POST',
-        body: formData
-    }).then(response => response.json())
-        .then(data => {
-            if (data.result === "success") {
-                var customMessage = `Form submitted successfully! Your row number is ${data.row}.`;
-                messageContainer.innerHTML = customMessage;
-            } else {
-                var errorMessage = "Form submission failed. Please try again.";
-                messageContainer.innerHTML = errorMessage;
-            }
-        })
-        .catch(error => {
-            messageContainer.innerHTML = "Please fix error and  Try again";
-        });
-}
-
-document.getElementById('contactForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    validateForm();
-});
